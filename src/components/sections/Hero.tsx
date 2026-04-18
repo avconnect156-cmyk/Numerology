@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import Section from "../ui/Section";
-import { Sparkle, Moon, Star } from "lucide-react";
+import { Sparkle, Star } from "lucide-react";
 
 const Hero = () => {
     return (
