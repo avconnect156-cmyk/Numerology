@@ -170,7 +170,7 @@ const StickyBottomBar: React.FC = () => {
       {/* MOBILE */}
       <div className="md:hidden flex flex-col items-center mt-2 gap-1">
 
-        <p className="text-lg font-serif font-bold text-gray-900">
+        <p className="text-lg font-serif font-bold text-white">
 
           {!isExpired && (
             <span className="line-through text-gray-500 mr-2">

@@ -11,21 +11,21 @@ const AboutTransform = () => {
     <Section className="pt-10 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Side Image */}
-       <div className="flex justify-center">
-  <div className="relative w-full max-w-xl">
-    <Image
-      src="/image1.jpg"
-      alt="Numerology"
-      width={200}
-      height={600}
-      className="w-[500px] h-[500px] object-cover rounded-t-[200px] rounded-b-none shadow-2xl"
-      priority
-    />
-  </div>
-</div>
+        <div className="order-2 lg:order-1 flex justify-center">
+          <div className="relative w-full max-w-xl">
+            <Image
+              src="/image1.jpg"
+              alt="Numerology"
+              width={200}
+              height={600}
+              className="w-[500px] h-[500px] object-cover rounded-t-[200px] rounded-b-none shadow-2xl"
+              priority
+            />
+          </div>
+        </div>
 
         {/* Right Side Content */}
-        <div className="space-y-6 text-center lg:text-left">
+        <div className="order-1 lg:order-2 space-y-6 text-center lg:text-left">
           <div className="text-xl font-bold tracking-[0.2em] text-white uppercase">
             Who We Are
           </div>
