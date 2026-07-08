@@ -36,8 +36,8 @@ const Header = () => {
                 <Link href="/" className="flex items-center gap-2 group">
                     <div className="relative">
                         {/* Simple Logo Placeholder based on screenshot 'Mahakaal' */}
-                        <span className="text-3xl font-serif text-secondary font-bold tracking-wide">
-                            Mahakaal
+                        <span className="text-3xl font-serif text-white font-bold tracking-wide">
+                            astrovastuconnect
                         </span>
                     </div>
                 </Link>
@@ -48,7 +48,7 @@ const Header = () => {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-semibold text-secondary hover:text-secondary transition-colors flex items-center gap-1"
+                            className="text-sm font-semibold text-white  transition-colors flex items-center gap-1"
                         >
                             {link.name}
                             
@@ -60,7 +60,7 @@ const Header = () => {
 
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="md:hidden text-gray-800"
+                    className="md:hidden text-white"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                     {isMobileMenuOpen ? <X /> : <Menu />}
@@ -75,7 +75,7 @@ const Header = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-gray-800 hover:text-primary py-2 font-medium"
+                                className="text-white hover:text-primary py-2 font-medium"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 {link.name}

@@ -3,10 +3,10 @@ import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import AboutTransform from "@/components/sections/AboutTransform";
 import Services from "@/components/sections/Services";
-import ZodiacSection from "@/components/sections/ZodiacSection";
+// import ZodiacSection from "@/components/sections/ZodiacSection";
 import FAQ from "@/components/sections/FAQ";
 import ConsultationBanner from "@/components/sections/ConsultationBanner";
-import Testimonials from "@/components/sections/Testimonials";
+// import Testimonials from "@/components/sections/Testimonials";
 import Footer from "@/components/sections/Footer";
 import SevenCards from "./SevenCard/sevencard";
 
@@ -17,11 +17,11 @@ export default function Home() {
       <Hero />
       <AboutTransform />
       <Services />
-      <ZodiacSection />
+      {/* <ZodiacSection /> */}
       <SevenCards />
       <ConsultationBanner />
       <FAQ />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Footer />
     </main>
   );

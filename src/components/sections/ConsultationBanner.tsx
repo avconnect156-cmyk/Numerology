@@ -75,24 +75,25 @@ const ConsultationBanner: React.FC = () => {
   const inputClass =
     "w-full h-[52px] px-4 bg-white border border-gray-200 rounded-xl text-black focus:outline-none focus:border-[#B08D57] focus:ring-2 focus:ring-[#B08D57]/20 transition-all";
 
-  const labelClass = "text-sm text-gray-600 mb-1 block";
+  const labelClass = "text-sm text-gray-600 mb-1 block ";
 
   return (
-    <div className="bg-[#F9F5EE] py-20">
+    <div className="bg-[#0b0230] py-20">
       <main className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-12 lg:gap-20 items-start lg:items-center">
         {/* LEFT CONTENT */}
         <div className="space-y-6 max-w-lg lg:max-w-xl text-center lg:text-left">
-          <span className="text-xs tracking-widest text-gray-500 uppercase">
+          <span className="text-lg tracking-widest text-white uppercase">
             Free Consultation
           </span>
 
-          <h1 className="text-[clamp(36px,5vw,64px)] font-bold text-[#B08D57] leading-tight">
+          <h1 className="text-[clamp(36px,5vw,64px)] font-bold text-[white] leading-tight">
             Get Your Personalized <br /> Numerology Report
           </h1>
 
           <p className="text-gray-600 text-lg leading-relaxed">
-            Discover insights about your career, relationships, and life path
-            through a detailed numerology analysis tailored just for you.
+            Discover insights about your career, relationships,
+            and life path through a detailed numerology
+             analysis tailored just for you.
           </p>
         </div>
 
@@ -198,7 +199,7 @@ const ConsultationBanner: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-[#B08D57] text-white font-semibold hover:opacity-90 transition-all disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-[white] text-black font-semibold hover:cursor-pointer border border-gray-300 hover:shadow-lg"
             >
               {loading ? "Processing..." : "Get Free Report"}
             </button>

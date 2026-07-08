@@ -5,7 +5,7 @@ const Terms = () => {
     <div className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
       
       <h1 className="text-3xl font-bold mb-4">
-        Terms of Service for Mahakaal
+        Terms of Service for astrovastuconnect
       </h1>
 
       <p className="text-sm text-gray-500 mb-8">
@@ -15,7 +15,7 @@ const Terms = () => {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Agreement to Terms</h2>
         <p>
-          By accessing or using the services provided by Mahakaal at{" "}
+          By accessing or using the services provided by astrovastuconnect at{" "}
           <a
             href="https://numerology-golden.vercel.app/"
             className="text-blue-600 underline"
@@ -44,14 +44,14 @@ const Terms = () => {
         <h2 className="text-xl font-semibold mb-2">Intellectual Property</h2>
         <p>
           The Service and all original content remain the exclusive property of
-          Mahakaal and are protected by applicable laws.
+          astrovastuconnect and are protected by applicable laws.
         </p>
       </section>
 
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">User Content</h2>
         <p>
-          You retain ownership of content you submit, but grant Mahakaal a
+          You retain ownership of content you submit, but grant astrovastuconnect a
           worldwide, non-exclusive, royalty-free license to use it.
         </p>
       </section>
@@ -76,7 +76,7 @@ const Terms = () => {
           Limitation of Liability
         </h2>
         <p>
-          Mahakaal is not liable for indirect or consequential damages,
+          astrovastuconnect is not liable for indirect or consequential damages,
           including loss of data, profits, or goodwill.
         </p>
       </section>
@@ -92,7 +92,7 @@ const Terms = () => {
         <h2 className="text-xl font-semibold mb-2">Governing Law</h2>
         <p>
           These Terms are governed by applicable laws of the jurisdiction where
-          Mahakaal operates.
+          astrovastuconnect operates.
         </p>
       </section>
 

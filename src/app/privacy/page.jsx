@@ -1,8 +1,8 @@
 import React from "react";
 
 export const metadata = {
-  title: "Privacy Policy | Mahakaal",
-  description: "Read the privacy policy of Mahakaal services.",
+  title: "Privacy Policy | astrovastuconnect",
+  description: "Read the privacy policy of astrovastuconnect services.",
 };
 
 const PrivacyPage = () => {
@@ -10,7 +10,7 @@ const PrivacyPage = () => {
     <div className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
 
       <h1 className="text-3xl font-bold mb-4">
-        Privacy Policy for Mahakaal
+        Privacy Policy for astrovastuconnect
       </h1>
 
       <p className="text-sm text-gray-500 mb-8">
@@ -21,7 +21,7 @@ const PrivacyPage = () => {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Introduction</h2>
         <p>
-          Mahakaal (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates{" "}
+          astrovastuconnect(&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates{" "}
           <a
             href="https://numerology-golden.vercel.app/"
             className="text-blue-600 underline"

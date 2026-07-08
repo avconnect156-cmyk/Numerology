@@ -85,7 +85,6 @@ export async function generateReport(data: ConsultationData) {
 
     throw new Error(errorMessage);
   }
-
   return response.blob();
 }
 

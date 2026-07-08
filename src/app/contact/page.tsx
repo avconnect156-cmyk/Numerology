@@ -19,32 +19,32 @@ export default function ContactPage() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-   // 1. Add 'async' so we can wait for the database response
+    // 1. Add 'async' so we can wait for the database response
     const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-        const response = await fetch('https://numerloogy-backend.onrender.com/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+        e.preventDefault();
 
-        const result = await response.json();
+        try {
+            const response = await fetch('https://numerloogy-backend.onrender.com/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
 
-        if (response.ok) {
-            alert("Success! Data saved to MongoDB.");
-            setFormData({ name: '', email: '', subject: '', message: '' });
-        } else {
-            alert("Backend Error: " + (result.message || "Unknown error"));
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("Success! Data saved to MongoDB.");
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                alert("Backend Error: " + (result.message || "Unknown error"));
+            }
+        } catch (error) {
+            console.error("Connection Refused:", error);
+            alert("Check if your Node.js server is running on Render!");
         }
-    } catch (error) {
-        console.error("Connection Refused:", error);
-        alert("Check if your Node.js server is running on Render!");
-    }
-};
+    };
 
     return (
         <main className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-white">
@@ -58,27 +58,27 @@ export default function ContactPage() {
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto px-4">
-                    <div className="text-xs font-bold tracking-[0.2em] text-gray-600 uppercase mb-4">
+                    <div className="text-lg font-bold tracking-[0.2em] text-white uppercase mb-4">
                         Contact Us
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-serif font-medium text-gray-900 mb-6">
+                    <h1 className="text-5xl md:text-7xl font-serif font-medium text-white mb-6">
                         We&apos;d love to <br />
-                        <span className="italic text-secondary ">hear from you</span>
+                        <span className="italic !text-red-500 ">hear from you</span>
                     </h1>
-                    <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
                         Whether you have a question about our services, pricing, or just want to say hello, we are always happy to help.
                     </p>
                 </div>
             </Section>
 
             {/* Contact Content */}
-            <Section className="py-20 bg-white">
+            <Section className="py-20 bg-#0b0230">
                 <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
                     {/* Contact Info */}
                     <div className="space-y-12">
                         <div className="space-y-6">
-                            <h3 className="text-3xl font-serif font-bold text-secondary">Get in Touch</h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <h3 className="text-3xl font-serif font-bold text-white">Get in Touch</h3>
+                            <p className="text-gray-300 leading-relaxed">
                                 Have a question or need assistance? Reach out to us via phone, email, or visit our office.
                             </p>
                         </div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-secondary font-serif text-lg">Visit Us</h4>
-                                    <p className="text-gray-600">202 Helga Springs Rd,<br />Crawford, TN 38554</p>
+                                    <p className="text-gray-300">202 Helga Springs Rd,<br />Crawford, TN 38554</p>
                                 </div>
                             </div>
 
@@ -100,7 +100,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-secondary font-serif text-lg">Call Us</h4>
-                                    <p className="text-gray-600">800.275.8777</p>
+                                    <p className="text-gray-300">800.275.8777</p>
                                     <p className="text-gray-500 text-sm">Mon-Fri: 9am - 6pm EST</p>
                                 </div>
                             </div>
@@ -140,7 +140,8 @@ export default function ContactPage() {
                                 <label htmlFor="message" className="text-sm font-bold text-secondary uppercase tracking-wide">Message</label>
                                 <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} className="w-full px-4 py-3 bg-white border border-gray-200 focus:outline-none focus:border-[#E65100] transition-colors resize-none" placeholder="Your Message" required />
                             </div>
-                            <Button type="submit" variant="primary" className="w-full rounded-m py-4 bg-white hover:bg-white !text-black font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-none border border-2-black">
+                            <Button type="submit" variant="primary" className="w-full rounded-m py-4 bg-white hover:bg-white !text-black font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-none border border-2-black hover:cursor-pointer">
+                    
                                 Send Message <Send className="w-4 h-4" />
                             </Button>
                         </form>

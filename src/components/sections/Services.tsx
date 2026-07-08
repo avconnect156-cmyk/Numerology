@@ -58,11 +58,11 @@ const Services = () => {
     >
       {/* Heading */}
       <div className="text-center mb-16 space-y-4 px-4">
-        <div className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase">
+        <div className="text-xl font-bold tracking-[0.2em] text-white uppercase">
           Our Services
         </div>
 
-        <h2 className="text-secondary text-4xl md:text-5xl font-medium font-serif leading-tight">
+        <h2 className="text-white text-4xl md:text-5xl font-medium font-serif leading-tight">
           We explain what each <br />
           <span className="italic">number means</span>
         </h2>

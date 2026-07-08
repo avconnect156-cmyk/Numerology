@@ -2,19 +2,19 @@
 
 :root {
   /* Background: #EEEEEE (Light Beige/Grey) */
-  --background: #EEEEEE;
+  --background: #0b0230;
   /* Secondary Background: #F9F9F9 (Lighter for sections) */
-  --background-secondary: #F9F9F9;
+  --background-secondary: #0b0230;
 
   /* Primary Accent: #E65100 (Orange) */
-  --primary: #E65100;
+  --primary: #white;
   /* Secondary Accent: #C5A065 (Muted Gold) */
-  --secondary: #C5A065;
+  --secondary: #0b0230;
   /* Highlight Gold: #D4AF37 */
-  --accent-gold: #D4AF37;
+  --accent-gold: #white;
 
   /* Text Dark: #1C1C1C */
-  --foreground: #1C1C1C;
+  --foreground: #white;
   /* Text Gray: #4A4A4A */
   --text-gray: #4A4A4A;
 

@@ -129,7 +129,7 @@ const StickyBottomBar: React.FC = () => {
 
         {/* LEFT PRICE */}
         <div className="hidden md:block absolute left-0 pl-12">
-          <p className="text-xl md:text-2xl font-serif font-bold text-gray-900">
+          <p className="text-xl md:text-2xl font-serif font-bold text-white">
 
             {!isExpired && (
               <span className="line-through text-gray-500 mr-2">
@@ -150,7 +150,7 @@ const StickyBottomBar: React.FC = () => {
         {/* CENTER BUTTON */}
         <Button
           onClick={handleOpen}
-          className="bg-white !text-black font-bold rounded-full shadow-none border border-black-300 px-10"
+          className="bg-white !text-black font-bold rounded-full shadow-none border border-black-300 px-10 h-12 hover:cursor-pointer"
         >
           {buttonText}
         </Button>

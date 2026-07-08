@@ -1,8 +1,8 @@
 import React from "react";
 
 export const metadata = {
-  title: "Cookie Policy | Mahakaal",
-  description: "Learn how Mahakaal uses cookies and tracking technologies.",
+  title: "Cookie Policy | astrovastuconnect",
+  description: "Learn how astrovastuconnect uses cookies and tracking technologies.",
 };
 
 const CookiesPage = () => {
@@ -10,7 +10,7 @@ const CookiesPage = () => {
     <div className="max-w-4xl mx-auto px-6 py-12 text-gray-800">
 
       <h1 className="text-3xl font-bold mb-4">
-        Cookie Policy for Mahakaal
+        Cookie Policy for astrovastuconnect
       </h1>
 
       <p className="text-sm text-gray-500 mb-8">

@@ -47,7 +47,7 @@ const FAQ = () => {
 
                         {/* Floating 2 */}
                         <motion.span
-                            className="absolute -top-10 -right-25 text-[180px] text-[#C5A065] opacity-80 rotate-12"
+                            className="absolute -top-10 -right-25 text-[180px] text-[white] opacity-80 rotate-12"
                             animate={{ y: [0, -15, 0] }}
                             transition={{
                                 duration: 2,
@@ -60,7 +60,7 @@ const FAQ = () => {
 
                         {/* Floating 6 */}
                         <motion.span
-                            className="absolute -bottom-10 -left-30 text-[200px] text-[#1C1C1C] opacity-10 -rotate-12"
+                            className="absolute -bottom-10 -left-30 text-[200px] text-[white] opacity-10 -rotate-12"
                             animate={{ y: [0, 15, 0] }}
                             transition={{
                                 duration: 2,
@@ -73,7 +73,7 @@ const FAQ = () => {
 
                         {/* Floating ? */}
                         <motion.span
-                            className="absolute bottom-70 -right-60 text-[220px] text-[#1C1C1C] opacity-5"
+                            className="absolute bottom-70 -right-60 text-[220px] text-[white] opacity-5"
                             animate={{ y: [0, -10, 0] }}
                             transition={{
                                 duration: 1,
@@ -89,14 +89,14 @@ const FAQ = () => {
                 {/* Right - Accordion */}
                 <div className="space-y-10">
                     <div className="space-y-4">
-                        <div className="text-xs font-bold tracking-[0.2em] text-gray-600 uppercase">
-                            Commmon Questions
+                        <div className="text-lg font-bold tracking-[0.2em] text-white uppercase">
+                            Common Questions
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-medium font-serif text-secondary">
+                        <h2 className="text-4xl md:text-5xl font-medium font-serif text-white">
                             Feel free to ask <br />
                             <span className="italic">more questions</span>
                         </h2>
-                        <p className="text-gray-600 text-sm">
+                        <p className="text-white text-sm">
                             Can&apos;t find the answer you&apos;re looking for? Reach out to our customer support team.
                         </p>
                     </div>
@@ -105,7 +105,7 @@ const FAQ = () => {
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className={`border-b border-gray-200 transition-all duration-300 ${
+                                className={`border-b border-white transition-all duration-300 ${
                                     activeIndex === index ? "pb-6" : "pb-4"
                                 }`}
                             >
@@ -118,16 +118,16 @@ const FAQ = () => {
                                     <span
                                         className={`font-serif text-xl ${
                                             activeIndex === index
-                                                ? "text-secondary"
-                                                : "text-gray-900 group-hover:text-secondary transition-colors"
+                                                ? "text-white"
+                                                : "text-white  transition-colors"
                                         }`}
                                     >
                                         {faq.question}
                                     </span>
                                     {activeIndex === index ? (
-                                        <span className="text-[#E65100] text-2xl">–</span>
+                                        <span className="text-white text-2xl">–</span>
                                     ) : (
-                                        <span className="text-gray-400 text-2xl">+</span>
+                                        <span className="text-white text-2xl">+</span>
                                     )}
                                 </button>
 
@@ -139,7 +139,7 @@ const FAQ = () => {
                                             exit={{ height: 0, opacity: 0 }}
                                             className="overflow-hidden"
                                         >
-                                            <p className="pt-4 text-gray-600 leading-relaxed text-sm max-w-md">
+                                            <p className="pt-4 text-white leading-relaxed text-sm max-w-md">
                                                 {faq.answer}
                                             </p>
                                         </motion.div>
