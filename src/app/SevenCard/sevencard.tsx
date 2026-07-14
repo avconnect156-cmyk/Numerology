@@ -87,27 +87,46 @@ const reportItems = [
 
 export default function ReportSection() {
   return (
-    <section className="bg-[#0b0230]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,_#07111F_0%,_#0F172A_35%,_#134E4A_75%,_#14532D_100%)] py-24">
+
+      {/* Background Glow */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-[#FFD54F]/10 blur-[140px] rounded-full"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
+
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
-         <h2 className="text-4xl md:text-6xl font-serif text-[white]">
-            This is what you get
+          <p className="uppercase tracking-[6px] text-[#FFD54F] font-semibold mb-5">
+            Premium Numerology Report
+          </p>
+
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight text-white">
+            Everything Included
             <br />
-            in the Report
+
+            <span className="bg-gradient-to-r from-[#FFE27A] via-[#FFD54F] to-[#F4B400] bg-clip-text text-transparent">
+              In Your Personalized Report
+            </span>
           </h2>
 
-          <div className="w-24 h-[2px] bg-[white] mx-auto mt-8"></div>
+          <p className="mt-8 max-w-3xl mx-auto text-lg md:text-xl text-white/75 leading-8">
+            Every report is carefully personalized using your birth details,
+            revealing powerful insights into your destiny, relationships,
+            career, health, finances, and future.
+          </p>
+
+          <div className="w-28 h-[3px] rounded-full bg-gradient-to-r from-[#FFD54F] to-[#F4B400] mx-auto mt-10"></div>
         </motion.div>
 
         {/* Grid */}
-        <div className="grid gap-y-20 gap-x-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
           {reportItems.map((item, index) => (
             <motion.div
               key={item.number}
@@ -115,25 +134,28 @@ export default function ReportSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.5,
-                delay: index * 0.05,
+                duration: 0.45,
+                delay: index * 0.04,
               }}
-              className="group"
+              className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-7 transition-all duration-300 hover:-translate-y-2 hover:border-[#FFD54F]/40 hover:bg-white/10 hover:shadow-[0_15px_45px_rgba(255,213,79,0.15)]"
             >
               {/* Number */}
-              <h3 className="text-5xl font-light text-white/90  transition-colors duration-300">
+              <h3 className="text-5xl font-light bg-gradient-to-r from-[#FFE27A] via-[#FFD54F] to-[#F4B400] bg-clip-text text-transparent">
                 {item.number}
               </h3>
 
               {/* Title */}
-              <h4 className="mt-8 text-2xl font-medium text-white leading-snug  transition-colors duration-300">
+              <h4 className="mt-6 text-2xl font-semibold text-white leading-snug">
                 {item.title}
               </h4>
 
               {/* Description */}
-              <p className="mt-4 text-lg leading-9 text-white/70">
+              <p className="mt-4 text-base leading-8 text-white/75">
                 {item.desc}
               </p>
+
+              {/* Hover Line */}
+              <div className="mt-6 h-[3px] w-0 rounded-full bg-gradient-to-r from-[#FFD54F] to-[#F4B400] transition-all duration-300 group-hover:w-16"></div>
             </motion.div>
           ))}
         </div>

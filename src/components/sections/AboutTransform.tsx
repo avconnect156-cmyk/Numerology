@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const AboutTransform = () => {
   return (
-    <Section className="pt-10 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28">
+    <Section className="pt-10 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28 !bg-[linear-gradient(180deg,_#0F172A_0%,_#134E4A_60%,_#14532D_100%)]">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Side Image */}
         <div className="order-2 lg:order-1 flex justify-center">
@@ -26,7 +26,7 @@ const AboutTransform = () => {
 
         {/* Right Side Content */}
         <div className="order-1 lg:order-2 space-y-6 text-center lg:text-left">
-          <div className="text-xl font-bold tracking-[0.2em] text-white uppercase">
+          <div className="text-2xl font-bold tracking-[0.2em] text-white uppercase">
             Who We Are
           </div>
 

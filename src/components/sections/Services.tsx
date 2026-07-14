@@ -54,40 +54,67 @@ const Services = () => {
   return (
     <Section
       id="services"
-      className="bg-[#1A1A2E] pt-12 pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32 -translate-y-4 md:-translate-y-6"
+      className="bg-[linear-gradient(180deg,_#0F172A_0%,_#134E4A_60%,_#14532D_100%)] pt-12 pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32 -translate-y-4 md:-translate-y-6"
     >
       {/* Heading */}
-      <div className="text-center mb-16 space-y-4 px-4">
-        <div className="text-xl font-bold tracking-[0.2em] text-white uppercase">
+      <div className="text-center mb-14 px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">
           Our Services
-        </div>
-
-        <h2 className="text-white text-4xl md:text-5xl font-medium font-serif leading-tight">
-          We explain what each <br />
-          <span className="italic">number means</span>
         </h2>
+
+       <p className="mt-6 max-w-4xl mx-auto text-lg md:text-2xl lg:text-3xl font-light leading-relaxed text-white/85">
+  Discover{" "}
+  <span className="bg-gradient-to-r from-[#FFD54F] via-[#F4B400] to-[#FFEA8A] bg-clip-text text-transparent font-semibold">
+    personalized numerology insights
+  </span>{" "}
+  that reveal your{" "}
+  <span className="text-white font-medium">
+    life's purpose
+  </span>
+  ,{" "}
+  <span className="bg-gradient-to-r from-[#FFD54F] via-[#F4B400] to-[#FFEA8A] bg-clip-text text-transparent font-semibold">
+    relationships
+  </span>
+  ,{" "}
+  <span className="bg-gradient-to-r from-[#FFD54F] via-[#F4B400] to-[#FFEA8A] bg-clip-text text-transparent font-semibold">
+    career path
+  </span>
+  , and{" "}
+  <span className="bg-gradient-to-r from-[#FFD54F] via-[#F4B400] to-[#FFEA8A] bg-clip-text text-transparent font-semibold">
+    future opportunities
+  </span>
+  <br className="hidden md:block" />
+  with remarkable{" "}
+  <span className="italic text-white font-medium">
+    clarity, confidence, and timeless wisdom.
+  </span>
+</p>
       </div>
 
       {/* Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-6xl mx-auto">
         {services.map((service, index) => (
           <div
             key={index}
-            className="group p-8 border border-gray-200 bg-white rounded-xl shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 hover:border-secondary"
+            className="group bg-[#FCFBF7] rounded-2xl p-6 border border-white/30 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#D4AF37]"
           >
-            <div className="w-10 h-10 mb-6 text-secondary transition-transform duration-300 group-hover:scale-110">
+            {/* Icon */}
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-[#FFD54F] to-[#F4B400] text-[#134E4A] mb-5 transition-transform duration-300 group-hover:scale-110">
               {service.icon}
             </div>
 
-            <h3 className="text-xl font-bold mb-4 text-black font-serif">
+            {/* Title */}
+            <h3 className="text-xl font-bold text-[#0F172A] font-serif mb-3">
               {service.title}
             </h3>
 
-            <p className="text-gray-600 text-sm leading-relaxed">
+            {/* Description */}
+            <p className="text-gray-600 text-sm leading-7">
               {service.description}
             </p>
 
-            <div className="mt-6 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-12"></div>
+            {/* Bottom Accent */}
+            <div className="mt-5 h-[3px] w-0 rounded-full bg-gradient-to-r from-[#FFD54F] to-[#F4B400] transition-all duration-300 group-hover:w-14"></div>
           </div>
         ))}
       </div>

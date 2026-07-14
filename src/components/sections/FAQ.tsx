@@ -28,13 +28,16 @@ const FAQ = () => {
   ];
 
   return (
-    <Section id="faq" className="py-12 md:py-16 bg-[#F9F9F9]">
+   <Section
+  id="faq"
+  className="py-12 md:py-16 bg-gradient-to-b from-[#081C3A] via-[#06142B] to-[#020B18]">
+
       <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
         {/* Left - Visuals */}
         <div className="relative h-[420px] hidden md:flex items-center justify-center">
           {/* Floating Main Number */}
           <motion.div
-            className="relative font-serif text-[240px] leading-none text-[#1C1C1C] opacity-90 select-none"
+            className="relative font-serif text-[240px] leading-none text-[#FFD700] opacity-90 select-none"
             animate={{ y: [0, -20, 0] }}
             transition={{
               duration: 6,
@@ -46,7 +49,7 @@ const FAQ = () => {
 
             {/* Floating 2 */}
             <motion.span
-              className="absolute -top-8 -right-20 text-[150px] text-white opacity-80 rotate-12"
+              className="absolute -top-8 -right-20 text-[150px] text-[#FFD700]/40 opacity-80 rotate-12"
               animate={{ y: [0, -15, 0] }}
               transition={{
                 duration: 2,
@@ -59,7 +62,7 @@ const FAQ = () => {
 
             {/* Floating 6 */}
             <motion.span
-              className="absolute -bottom-8 -left-24 text-[170px] text-white opacity-10 -rotate-12"
+              className="absolute -bottom-8 -left-24 text-[170px] text-[#D4AF37]/20 rotate-12"
               animate={{ y: [0, 15, 0] }}
               transition={{
                 duration: 2,
@@ -72,7 +75,7 @@ const FAQ = () => {
 
             {/* Floating 19 */}
             <motion.span
-              className="absolute top-0 -right-44 text-[180px] text-white opacity-5"
+              className="absolute top-0 -right-44 text-[180px] text-[#FFD700]/10"
               animate={{ y: [0, -10, 0] }}
               transition={{
                 duration: 3,
@@ -88,16 +91,16 @@ const FAQ = () => {
         {/* Right - Accordion */}
         <div className="space-y-8">
           <div className="space-y-3">
-            <div className="text-lg font-bold tracking-[0.2em] text-white uppercase">
+            <div className="inline-block rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-4 py-2 text-sm font-semibold tracking-[0.2em] text-[#FFD700] uppercase">
               Common Questions
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-medium font-serif text-white">
+            <h2 className="text-4xl md:text-5xl font-bold font-serif text-white">
               Feel free to ask <br />
-              <span className="italic">more questions</span>
+              <span className="italic text-[#FFD700]">more questions</span>
             </h2>
 
-            <p className="text-white text-sm">
+            <p className="text-gray-300 text-sm leading-7">
               Can't find the answer you're looking for? Reach out to our
               customer support team.
             </p>
@@ -107,7 +110,7 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`border-b border-white transition-all duration-300 ${
+                className={`border-b border-[#D4AF37]/30 transition-all duration-300 ${
                   activeIndex === index ? "pb-5" : "pb-3"
                 }`}
               >
@@ -120,14 +123,14 @@ const FAQ = () => {
                   <span
                     className={`font-serif text-xl ${
                       activeIndex === index
-                        ? "text-white"
+                        ? "text-[#F8FAFC]"
                         : "text-white transition-colors"
                     }`}
                   >
                     {faq.question}
                   </span>
 
-                  <span className="text-white text-2xl">
+                 <span className="text-[#FFD700] text-2xl font-bold">
                     {activeIndex === index ? "−" : "+"}
                   </span>
                 </button>
@@ -140,7 +143,7 @@ const FAQ = () => {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="pt-4 text-white leading-relaxed text-sm max-w-md">
+                      <p className="pt-4 text-gray-300 leading-7 text-sm max-w-md">
                         {faq.answer}
                       </p>
                     </motion.div>
