@@ -28,9 +28,9 @@ const FAQ = () => {
   ];
 
   return (
-   <Section
-  id="faq"
-  className="py-12 md:py-16 bg-gradient-to-b from-[#081C3A] via-[#06142B] to-[#020B18]">
+    <Section
+      id="faq"
+      className="py-12 md:py-16 bg-gradient-to-b from-[#081C3A] via-[#06142B] to-[#020B18]">
 
       <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
         {/* Left - Visuals */}
@@ -75,7 +75,7 @@ const FAQ = () => {
 
             {/* Floating 19 */}
             <motion.span
-              className="absolute top-0 -right-44 text-[180px] text-[#FFD700]/10"
+              className="absolute  -top-44 -right-52 text-[180px] text-[#FFD700]/10"
               animate={{ y: [0, -10, 0] }}
               transition={{
                 duration: 3,
@@ -110,9 +110,8 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`border-b border-[#D4AF37]/30 transition-all duration-300 ${
-                  activeIndex === index ? "pb-5" : "pb-3"
-                }`}
+                className={`border-b border-[#D4AF37]/30 transition-all duration-300 ${activeIndex === index ? "pb-5" : "pb-3"
+                  }`}
               >
                 <button
                   className="w-full flex items-center justify-between text-left focus:outline-none"
@@ -121,16 +120,15 @@ const FAQ = () => {
                   }
                 >
                   <span
-                    className={`font-serif text-xl ${
-                      activeIndex === index
+                    className={`font-serif text-xl ${activeIndex === index
                         ? "text-[#F8FAFC]"
                         : "text-white transition-colors"
-                    }`}
+                      }`}
                   >
                     {faq.question}
                   </span>
 
-                 <span className="text-[#FFD700] text-2xl font-bold">
+                  <span className="text-[#FFD700] text-2xl font-bold">
                     {activeIndex === index ? "−" : "+"}
                   </span>
                 </button>
@@ -153,13 +151,13 @@ const FAQ = () => {
             ))}
           </div>
 
-          <Link href="/contact">
-            <div className="pt-3">
-              <Button className="rounded-md bg-white shadow-none border !text-black hover:bg-white px-8 py-3 text-xs uppercase tracking-wider font-bold">
+          <div className="pt-4 flex justify-center lg:justify-start">
+            <Link href="/contact">
+              <Button className="rounded-full px-8 py-4 bg-gradient-to-r from-[#FFD54F] via-[#FFC107] to-[#F4B400] !text-black font-bold uppercase hover:scale-105 transition-all duration-300 shadow-none">
                 Contact Us
               </Button>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </div>
     </Section>

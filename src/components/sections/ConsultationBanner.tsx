@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { generateReport, ConsultationData } from "../../Service/api";
+import ConsultationSteps from "../ConsultationSteps";
 
 const ConsultationBanner: React.FC = () => {
   const [formData, setFormData] = useState<ConsultationData>({
@@ -42,6 +43,7 @@ const ConsultationBanner: React.FC = () => {
     }
 
     setLoading(true);
+
     setStatus({
       type: "",
       message: "",
@@ -53,14 +55,18 @@ const ConsultationBanner: React.FC = () => {
       const url = window.URL.createObjectURL(pdfBlob);
 
       const a = document.createElement("a");
+
       a.href = url;
+
       a.download = `Numerology_Report_${formData.fullName.replace(
         /\s+/g,
         "_"
       )}.pdf`;
 
       document.body.appendChild(a);
+
       a.click();
+
       document.body.removeChild(a);
 
       window.URL.revokeObjectURL(url);
@@ -103,159 +109,89 @@ const ConsultationBanner: React.FC = () => {
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,_#07111F_0%,_#0F172A_35%,_#134E4A_75%,_#14532D_100%)] py-24">
 
-    
-     
-     {/* Main Layout */}
-      <main className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_520px] gap-16 items-start">
-        
-        {/* LEFT SIDE */}
-{/* LEFT SIDE */}
-<div className="relative max-w-xl">
+      {/* Main Layout */}
+     {/* Section Heading */}
+<div className="relative z-10 mx-auto mb-16 max-w-3xl px-6 text-center">
 
-  {/* Timeline */}
-  <div className="relative">
+  <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#FFD54F]">
+    Begin Your Journey
+  </p>
 
-    {/* Vertical Line */}
-    <div className="absolute left-[7px] top-2 bottom-[88px] w-[2px] bg-[#F4B400]" />
+  <h2 className="text-3xl font-bold leading-tight text-white md:text-5xl">
+    Unlock the Wisdom Hidden Within
+    <span className="block bg-gradient-to-r from-[#FFD54F] via-[#FFC107] to-[#F4B400] bg-clip-text text-transparent">
+      Your Birth Numbers
+    </span>
+  </h2>
 
-    {/* STEP 1 */}
-    <div className="relative flex gap-8 min-h-[170px]">
-      <div className="mt-2 h-4 w-4 flex-shrink-0 rounded-full bg-[#FFD54F]" />
-
-      <div className="flex-1">
-        <h3 className="text-2xl font-semibold text-white">
-          Enter Your Details
-        </h3>
-
-        <p className="mt-3 max-w-md text-white/70 leading-8">
-          Share your date of birth, name, and place of birth with us.
-        </p>
-
-        <div className="mt-8 h-px w-52 bg-white/10"></div>
-      </div>
-    </div>
-
-    {/* STEP 2 */}
-    <div className="relative flex gap-8 min-h-[170px]">
-      <div className="mt-2 h-4 w-4 flex-shrink-0 rounded-full bg-[#FFD54F]" />
-
-      <div className="flex-1">
-        <h3 className="text-2xl font-semibold text-white">
-          Numerology Analysis
-        </h3>
-
-        <p className="mt-3 max-w-md text-white/70 leading-8">
-          Our experts carefully analyze your numbers to reveal your strengths,
-          challenges, hidden talents, and future opportunities.
-        </p>
-
-        <div className="mt-8 h-px w-52 bg-white/10"></div>
-      </div>
-    </div>
-
-    {/* STEP 3 */}
-    <div className="relative flex gap-8 min-h-[170px]">
-      <div className="mt-2 h-4 w-4 flex-shrink-0 rounded-full bg-[#FFD54F]" />
-
-      <div className="flex-1">
-        <h3 className="text-2xl font-semibold text-white">
-          Personalized Report
-        </h3>
-
-        <p className="mt-3 max-w-md text-white/70 leading-8">
-          Receive a premium report covering your Life Path, Destiny, Career,
-          Relationships, Wealth, Health, and much more.
-        </p>
-
-        <div className="mt-8 h-px w-52 bg-white/10"></div>
-      </div>
-    </div>
-
-    {/* STEP 4 */}
-    <div className="relative flex gap-8 min-h-[170px]">
-      <div className="mt-2 h-4 w-4 flex-shrink-0 rounded-full bg-[#FFD54F]" />
-
-      <div className="flex-1">
-        <h3 className="text-2xl font-semibold text-white">
-          Personalized Remedies
-        </h3>
-
-        <p className="mt-3 max-w-md text-white/70 leading-8">
-          Discover lucky numbers, gemstones, colors, and personalized remedies
-          to bring greater balance, prosperity, and success into your life.
-        </p>
-
-        <div className="mt-8 h-px w-52 bg-white/10"></div>
-      </div>
-    </div>
-
-    {/* STEP 5 */}
-    <div className="relative flex gap-8 min-h-[170px]">
-      <div className="mt-2 h-4 w-4 flex-shrink-0 rounded-full bg-[#FFD54F]" />
-
-      <div className="flex-1">
-        <h3 className="text-2xl font-semibold text-white">
-          Download Your Report
-        </h3>
-
-        <p className="mt-3 max-w-md text-white/70 leading-8">
-          Instantly download your beautifully designed Premium Numerology Report
-          and begin your journey with clarity, confidence, and purpose.
-        </p>
-      </div>
-    </div>
-
-  </div>
+  <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/70 md:text-lg">
+    Share your details and receive a personalized numerology report designed
+    to help you understand your path, potential, and future journey.
+  </p>
 
 </div>
 
+{/* Main Layout */}
+<main className="relative z-10 mx-auto grid w-full max-w-[1400px] grid-cols-1 items-start gap-16 px-6 md:px-12 lg:grid-cols-[1fr_520px]">
 
-        {/* RIGHT SIDE - FORM */}
+        {/* ================= LEFT SIDE ================= */}
+        <ConsultationSteps />
 
-        <div className="w-full max-w-lg lg:max-w-xl mx-auto lg:ml-auto mt-10 lg:mt-18">
+        {/* ================= RIGHT SIDE - FORM ================= */}
+        <div className="mx-auto mt-10 w-full max-w-lg lg:ml-auto lg:mt-18 lg:max-w-xl">
 
-           <div className="rounded-3xl border border-[#FFD54F]/30 bg-gradient-to-br from-white via-[#FFFDF7] to-[#FFF7E6] p-8 shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
+          <div className="rounded-3xl border border-[#FFD54F]/30 bg-gradient-to-br from-white via-[#FFFDF7] to-[#FFF7E6] p-8 shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
+
+            {/* Status Message */}
             {status.message && (
               <div
-                className={`mb-6 rounded-xl p-4 text-sm ${status.type === "success"
+                className={`mb-6 rounded-xl p-4 text-sm ${
+                  status.type === "success"
                     ? "bg-green-100 text-green-700"
                     : "bg-red-100 text-red-700"
-                  }`}
+                }`}
               >
                 {status.message}
               </div>
             )}
 
-            <h2 className="text-xl   font-semibold text-[#0F172A] text-center">
+            {/* Heading */}
+            <h2 className="text-center text-xl font-semibold text-[#0F172A]">
               SUBMIT YOUR DETAILS TO:
             </h2>
 
-            <p className="mb-10 text-golden font-medium text-center mt-2">
-              Get Instant Access to A FREE Short Preview of Your Premium Life Path Report
+            <p className="mt-2 mb-10 text-center font-medium text-golden">
+              Get Instant Access to A FREE Short Preview of Your Premium Life
+              Path Report
             </p>
 
+            {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
 
               {/* Full Name */}
               <div>
-                <label className={labelClass}>Full Name</label>
+                <label className={labelClass}>
+                  Full Name
+                </label>
 
                 <input
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-
                   className={inputClass}
                   placeholder="Full Name"
                 />
               </div>
 
               {/* Email + Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 
+                {/* Email */}
                 <div>
-                  <label className={labelClass}>Email</label>
+                  <label className={labelClass}>
+                    Email
+                  </label>
 
                   <input
                     type="email"
@@ -268,8 +204,11 @@ const ConsultationBanner: React.FC = () => {
                   />
                 </div>
 
+                {/* Phone */}
                 <div>
-                  <label className={labelClass}>Phone</label>
+                  <label className={labelClass}>
+                    Phone
+                  </label>
 
                   <input
                     type="tel"
@@ -285,10 +224,13 @@ const ConsultationBanner: React.FC = () => {
               </div>
 
               {/* DOB + Gender */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 
+                {/* Date of Birth */}
                 <div>
-                  <label className={labelClass}>Date of Birth</label>
+                  <label className={labelClass}>
+                    Date of Birth
+                  </label>
 
                   <input
                     type="date"
@@ -300,8 +242,11 @@ const ConsultationBanner: React.FC = () => {
                   />
                 </div>
 
+                {/* Gender */}
                 <div>
-                  <label className={labelClass}>Gender</label>
+                  <label className={labelClass}>
+                    Gender
+                  </label>
 
                   <select
                     name="gender"
@@ -310,10 +255,21 @@ const ConsultationBanner: React.FC = () => {
                     required
                     className={inputClass}
                   >
-                    <option value="">Select</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="">
+                      Select
+                    </option>
+
+                    <option value="male">
+                      Male
+                    </option>
+
+                    <option value="female">
+                      Female
+                    </option>
+
+                    <option value="other">
+                      Other
+                    </option>
                   </select>
                 </div>
 
@@ -321,7 +277,9 @@ const ConsultationBanner: React.FC = () => {
 
               {/* Birth Place */}
               <div>
-                <label className={labelClass}>Birth Place</label>
+                <label className={labelClass}>
+                  Birth Place
+                </label>
 
                 <input
                   type="text"
@@ -333,13 +291,15 @@ const ConsultationBanner: React.FC = () => {
                 />
               </div>
 
-              {/* Submit */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={loading}
                 className="mt-4 w-full rounded-xl bg-gradient-to-r from-[#FFE27A] via-[#FFD54F] to-[#F4B400] py-4 text-lg font-bold text-[#0F172A] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(255,213,79,0.45)] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {loading ? "Generating Report..." : "Get Free Report"}
+                {loading
+                  ? "Generating Report..."
+                  : "Get Free Report"}
               </button>
 
             </form>
@@ -347,7 +307,9 @@ const ConsultationBanner: React.FC = () => {
           </div>
 
         </div>
+
       </main>
+
     </div>
   );
 };

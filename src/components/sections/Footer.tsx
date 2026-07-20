@@ -72,7 +72,8 @@ const Footer = () => {
             <Link href="/">
               <h2 className="text-3xl font-bold tracking-wide">
                 <span className="text-[#D4AF37]">Astro</span>
-                <span className="text-white">VastuConnect</span>
+                <span className="text-white">Vastu</span>
+                <span className="text-[#D4AF37]">Connect</span>
               </h2>
             </Link>
 

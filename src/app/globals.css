@@ -2,14 +2,14 @@
 
 :root {
   /* Background: #EEEEEE (Light Beige/Grey) */
-  --background: #0b0230;
+  --background: #050d23;
   /* Secondary Background: #F9F9F9 (Lighter for sections) */
-  --background-secondary: #0b0230;
+  --background-secondary: #050d23;
 
   /* Primary Accent: #E65100 (Orange) */
   --primary: #white;
   /* Secondary Accent: #C5A065 (Muted Gold) */
-  --secondary: #0b0230;
+  --secondary: #050d23;
   /* Highlight Gold: #D4AF37 */
   --accent-gold: #white;
 

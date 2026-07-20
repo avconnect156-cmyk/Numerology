@@ -39,12 +39,18 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="group">
-          <h1 className="text-2xl lg:text-3xl font-bold tracking-wide">
-            <span className="text-[#FFD700]">Astro</span>
-            <span className="text-white">Vastu</span>
-            <span className="text-[#D4AF37]">Connect</span>
-          </h1>
-        </Link>
+  <div className="flex flex-col">
+    <h1 className="text-2xl lg:text-3xl font-bold tracking-wide">
+      <span className="text-[#FFD700]">Astro</span>
+      <span className="text-white">Vastu</span>
+      <span className="text-[#D4AF37]">Connect</span>
+    </h1>
+
+    <span className="mt-1 text-[11px] md:text-xs uppercase tracking-[0.35em] text-[#B8C5D6]">
+      Numerology • Astrology • Vastu
+    </span>
+  </div>
+</Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-10">
