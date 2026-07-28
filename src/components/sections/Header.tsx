@@ -7,14 +7,38 @@ import { Menu, X } from "lucide-react";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      const currentScrollY = window.scrollY;
+
+      // Add background after scrolling
+      setIsScrolled(currentScrollY > 30);
+
+      // Always show header near the top
+      if (currentScrollY <= 30) {
+        setShowHeader(true);
+      } else {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling Down → Hide Header
+          setShowHeader(false);
+        } else {
+          // Scrolling Up → Show Header
+          setShowHeader(true);
+        }
+      }
+
+      lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navLinks = [
@@ -30,7 +54,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transform transition-all duration-500 ${
+        showHeader ? "translate-y-0" : "-translate-y-full"
+      } ${
         isScrolled
           ? "bg-[#081C3A]/85 backdrop-blur-xl border-b border-[#D4AF37]/20 shadow-2xl py-4"
           : "bg-transparent py-6"
@@ -39,18 +65,18 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="group">
-  <div className="flex flex-col">
-    <h1 className="text-2xl lg:text-3xl font-bold tracking-wide">
-      <span className="text-[#FFD700]">Astro</span>
-      <span className="text-white">Vastu</span>
-      <span className="text-[#D4AF37]">Connect</span>
-    </h1>
+          <div className="flex flex-col">
+            <h1 className="text-2xl lg:text-3xl font-bold tracking-wide">
+              <span className="text-[#FFD700]">Astro</span>
+              <span className="text-white">Vastu</span>
+              <span className="text-[#D4AF37]">Connect</span>
+            </h1>
 
-    <span className="mt-1 text-[11px] md:text-xs uppercase tracking-[0.35em] text-[#B8C5D6]">
-      Numerology • Astrology • Vastu
-    </span>
-  </div>
-</Link>
+            <span className="mt-1 text-[11px] md:text-xs uppercase tracking-[0.35em] text-[#B8C5D6]">
+              Numerology • Astrology • Vastu
+            </span>
+          </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-10">
@@ -98,5 +124,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;

@@ -10,6 +10,11 @@ import PreservationSection from "@/components/about/PreservationSection";
 import BeliefSection from "@/components/about/BeliefSection";
 import KarmaSection from "@/components/about/KarmaSection";
 import VastuSection from "@/components/about/VastuSection";
+import KaliyugSection from "@/components/about/KaliyugSection";
+import VastuStoriesSection from "@/components/about/VastuStoriesSection";
+import ModernVastuSection from "@/components/about/ModernVastuSection";
+import NumerologyBasicsSection from "@/components/about/NumerologyBasicsSection";
+import EnergyAlignmentSection from "@/components/about/EnergyAlignmentSection";
 
 export default function AboutPage() {
   return (
@@ -24,8 +29,13 @@ export default function AboutPage() {
       <PreservationSection />
       <BeliefSection />
       <KarmaSection />
+      <KaliyugSection />
       <VastuSection />
-
+      <VastuStoriesSection />
+      <ModernVastuSection />
+      <NumerologyBasicsSection />
+      <EnergyAlignmentSection />
+      
       <Footer />
     </main>
   );

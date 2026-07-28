@@ -7,6 +7,7 @@ import Section from "../ui/Section";
 import Modal from "../../app/Modal/Modal";
 import usePricing from "@/hooks/usePricing";
 import NumerologyBackground from "@/components/NumerologyBackground";
+import Link from "next/link";
 
 type PricingType = {
   price: number;
@@ -103,17 +104,14 @@ const Hero: React.FC = () => {
                 BUY NOW AT • ₹{finalPrice}
               </Button>
               {/* Centered Free Report Link */}
-              <div className="w-[320px] flex justify-center">
-                <button
-                  onClick={() => {
-                    // Add your action here
-                    console.log("Free report clicked");
-                  }}
-                  className="text-white/80 text-sm font-medium underline underline-offset-4 decoration-1 hover:text-yellow-300 transition-all duration-300 cursor-pointer"
-                >
-                  Or Get a Short Report for Free
-                </button>
-              </div>
+           <div className="w-[320px] flex justify-center">
+  <Link
+    href="/free-report"
+    className="text-white/80 text-sm font-medium underline underline-offset-4 decoration-1 hover:text-yellow-300 transition-all duration-300"
+  >
+    Or Get a Short Report for Free
+  </Link>
+</div>
             </div>
           </motion.div>
           {/* RIGHT IMAGE */}
