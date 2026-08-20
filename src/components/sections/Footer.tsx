@@ -6,7 +6,7 @@ import { Instagram, Facebook, Linkedin } from "lucide-react";
 import Button from "../ui/Button";
 import { subscribeUser } from "../../Service/api";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -21,15 +21,16 @@ const Footer = () => {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email) {
+    if (!email.trim()) {
       setStatus({
         type: "error",
-        message: "Email is required",
+        message: "Email is required.",
       });
       return;
     }
 
     setLoading(true);
+
     setStatus({
       type: null,
       message: "",
@@ -45,27 +46,24 @@ const Footer = () => {
 
       setEmail("");
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        setStatus({
-          type: "error",
-          message: error.message,
-        });
-      } else {
-        setStatus({
-          type: "error",
-          message: "Something went wrong",
-        });
-      }
+      setStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong.",
+      });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#081C3A] via-[#06142B] to-[#020B18] border-t border-[#D4AF37]/20 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="relative z-[9999] bg-[#071B33] text-white pt-20 pb-10">
+      <div className="mx-auto max-w-7xl px-6">
+
         {/* Top Section */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
 
           {/* Brand */}
           <div className="space-y-5">
@@ -77,75 +75,82 @@ const Footer = () => {
               </h2>
             </Link>
 
-            <p className="text-gray-300 leading-7 text-[15px]">
-              Discover the hidden wisdom within your birth numbers and receive
-              personalized guidance for your career, relationships, finances,
-              and life purpose through ancient numerology.
+            <p className="text-[15px] leading-7 text-gray-300">
+              Discover the hidden wisdom within your birth numbers and
+              receive personalized guidance for your career,
+              relationships, finances and life purpose through
+              ancient numerology.
             </p>
           </div>
 
           {/* Support */}
           <div>
-            <h4 className="text-[#D4AF37] uppercase font-semibold tracking-widest mb-5">
+            <h4 className="mb-5 font-semibold uppercase tracking-widest text-[#D4AF37]">
               Support
             </h4>
 
             <div className="space-y-3">
               <Link
                 href="/term"
-                className="block text-gray-300 hover:text-[#D4AF37] transition duration-300"
+                className="block text-gray-300 transition hover:text-[#FFD700]"
               >
                 Terms of Service
               </Link>
 
               <Link
                 href="/privacy"
-                className="block text-gray-300 hover:text-[#D4AF37] transition duration-300"
+                className="block text-gray-300 transition hover:text-[#FFD700]"
               >
                 Privacy Policy
               </Link>
 
               <Link
                 href="/cookies"
-                className="block text-gray-300 hover:text-[#D4AF37] transition duration-300"
+                className="block text-gray-300 transition hover:text-[#FFD700]"
               >
                 Cookies Policy
               </Link>
             </div>
           </div>
-
-          {/* Pages */}
+                    {/* Pages */}
           <div>
-            <h4 className="text-[#D4AF37] uppercase font-semibold tracking-widest mb-5">
+            <h4 className="mb-5 font-semibold uppercase tracking-widest text-[#D4AF37]">
               Pages
             </h4>
 
             <div className="space-y-3">
               <Link
                 href="/about-us"
-                className="block text-gray-300 hover:text-[#D4AF37] transition duration-300"
+                className="block text-gray-300 transition duration-300 hover:text-[#FFD700]"
               >
                 About Us
               </Link>
 
               <Link
                 href="/contact"
-                className="block text-gray-300 hover:text-[#D4AF37] transition duration-300"
+                className="block text-gray-300 transition duration-300 hover:text-[#FFD700]"
               >
                 Contact
+              </Link>
+
+              <Link
+                href="/faq"
+                className="block text-gray-300 transition duration-300 hover:text-[#FFD700]"
+              >
+                FAQ
               </Link>
             </div>
           </div>
 
           {/* Subscribe */}
           <div>
-            <h4 className="text-[#D4AF37] uppercase font-semibold tracking-widest mb-5">
+            <h4 className="mb-5 font-semibold uppercase tracking-widest text-[#D4AF37]">
               Subscribe
             </h4>
 
-            <p className="text-gray-300 text-sm mb-4">
-              Get exclusive numerology insights, offers, and updates directly
-              to your inbox.
+            <p className="mb-4 text-sm leading-6 text-gray-300">
+              Get exclusive numerology insights, special offers and updates
+              delivered directly to your inbox.
             </p>
 
             <form
@@ -158,137 +163,82 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="
-                  w-full
-                  rounded-xl
-                  border
-                  border-[#D4AF37]/30
-                  bg-white/5
-                  backdrop-blur-md
-                  px-4
-                  py-3
-                  text-white
-                  placeholder:text-gray-400
-                  focus:outline-none
-                  focus:border-[#FFD700]
-                  transition-all
-                "
-              />
+                className="w-full rounded-xl border border-[#D4AF37]/30 bg-white/5 px-4 py-3 text-white placeholder:text-gray-400 backdrop-blur-md transition-all focus:border-[#FFD700] focus:outline-none"></input>
 
-              <Button
-                type="submit"
-                disabled={loading}
-                className="
-                  w-full
-                  rounded-xl
-                  bg-gradient-to-r
-                  from-[#B8860B]
-                  via-[#FFD700]
-                  to-[#F4C430]
-                  text-black
-                  font-bold
-                  py-3
-                  shadow-lg
-                  transition-all
-                  duration-300
-                  hover:scale-[1.02]
-                  hover:brightness-110
-                  hover:cursor-pointer
-                  shadow-none
-                "
-              >
+<Button
+  type="submit"
+  disabled={loading}
+  className="w-full rounded-xl bg-gradient-to-r from-[#B8860B] via-[#FFD700] to-[#F4C430] py-3 font-bold text-black transition-all duration-300 hover:scale-[1.02] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70">
                 {loading ? "Subscribing..." : "SUBSCRIBE"}
               </Button>
+
+              {status.message && (
+                <p
+                  className={`text-sm ${
+                    status.type === "success"
+                      ? "text-green-400"
+                      : "text-red-400"
+                  }`}
+                >
+                  {status.message}
+                </p>
+              )}
             </form>
+          </div>
 
-            {status.message && (
-              <p
-                className={`mt-3 text-sm ${
-                  status.type === "success"
-                    ? "text-green-400"
-                    : "text-red-400"
-                }`}
+        </div>
+                {/* Bottom Section */}
+        <div className="mt-16 border-t border-white/10 pt-8">
+
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+
+            {/* Copyright */}
+            <p className="text-center text-sm text-gray-400 md:text-left">
+              © {new Date().getFullYear()} AstroVastuConnect. All rights reserved.
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-4">
+
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D4AF37]/40 text-[#D4AF37] transition-all duration-300 hover:scale-110 hover:border-[#FFD700] hover:bg-[#D4AF37] hover:text-[#071B33]"
               >
-                {status.message}
-              </p>
-            )}
-          </div>
-        </div>
+                <Instagram size={18} />
+              </a>
 
-        {/* Bottom */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+              {/* LinkedIn */}
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D4AF37]/40 text-[#D4AF37] transition-all duration-300 hover:scale-110 hover:border-[#FFD700] hover:bg-[#D4AF37] hover:text-[#071B33]"
+              >
+                <Linkedin size={18} />
+              </a>
 
-          <p className="text-sm text-gray-400 text-center md:text-left">
-            © {new Date().getFullYear()} AstroVastuConnect. All rights reserved.
-          </p>
+              {/* Facebook */}
+              <a
+                href="https://facebook.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D4AF37]/40 text-[#D4AF37] transition-all duration-300 hover:scale-110 hover:border-[#FFD700] hover:bg-[#D4AF37] hover:text-[#071B33]"
+              >
+                <Facebook size={18} />
+              </a>
 
-          <div className="flex items-center gap-4">
-
-            <a
-              href="#"
-              className="
-                w-11
-                h-11
-                rounded-full
-                border
-                border-[#D4AF37]/40
-                flex
-                items-center
-                justify-center
-                text-[#D4AF37]
-                transition-all
-                duration-300
-                hover:bg-[#D4AF37]
-                hover:text-[#081C3A]
-              "
-            >
-              <Instagram size={18} />
-            </a>
-
-            <a
-              href="#"
-              className="
-                w-11
-                h-11
-                rounded-full
-                border
-                border-[#D4AF37]/40
-                flex
-                items-center
-                justify-center
-                text-[#D4AF37]
-                transition-all
-                duration-300
-                hover:bg-[#D4AF37]
-                hover:text-[#081C3A]
-              "
-            >
-              <Linkedin size={18} />
-            </a>
-
-            <a
-              href="#"
-              className="
-                w-11
-                h-11
-                rounded-full
-                border
-                border-[#D4AF37]/40
-                flex
-                items-center
-                justify-center
-                text-[#D4AF37]
-                transition-all
-                duration-300
-                hover:bg-[#D4AF37]
-                hover:text-[#081C3A]
-              "
-            >
-              <Facebook size={18} />
-            </a>
+            </div>
 
           </div>
+
         </div>
+
       </div>
     </footer>
   );
