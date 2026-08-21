@@ -81,7 +81,7 @@ const VastuStoriesSection = () => {
                   </div>
 
                   <p className="mt-5 text-sm sm:text-base md:text-[15px] leading-7 text-white/85">
-                    Duryodhan mistook a water pond, created through the palace's
+                    Duryodhan mistook a water pond, created through the palace&apos;s
                     illusion, as a solid floor and fell into it.
                   </p>
 
@@ -96,14 +96,14 @@ const VastuStoriesSection = () => {
                     </div>
 
                     <h4 className="text-lg sm:text-[20px] md:text-[22px] font-bold text-[#FFD54F]">
-                      Draupadi's Reaction
+                      Draupadi&apos;s Reaction
                     </h4>
 
                   </div>
 
                   <p className="mt-5 text-sm sm:text-base md:text-[15px] leading-7 text-white/85">
                     Draupadi laughed (or smiled, depending on interpretation),
-                    which deeply hurt Duryodhan's pride and self-respect.
+                    which deeply hurt Duryodhan&apos;s pride and self-respect.
                   </p>
 
                 </div>
@@ -123,7 +123,7 @@ const VastuStoriesSection = () => {
                   </div>
 
                   <p className="mt-5 text-sm sm:text-base md:text-[15px] leading-7 text-white/85">
-                    The incident caused a deep wound to Duryodhan's ego,
+                    The incident caused a deep wound to Duryodhan&apos;s ego,
                     increasing his anger and desire for revenge.
                   </p>
 

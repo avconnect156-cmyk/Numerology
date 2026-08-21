@@ -570,11 +570,11 @@ const NumerologyBasicsSection = () => {
                                 <div className="mt-8 rounded-2xl border border-[#FFD54F]/20 bg-[#FFD54F]/10 px-6 py-6">
 
                                     <p className="text-center text-lg sm:text-xl md:text-[22px] lg:text-[24px] font-bold text-[#FFD54F] leading-relaxed">
-                                        "Numbers are not just symbols—
+                                        &quot;Numbers are not just symbols—
                                         <br />
                                         they are vibrations that connect
                                         <br />
-                                        human life with cosmic energy."
+                                        human life with cosmic energy.&quot;
                                     </p>
 
                                 </div>

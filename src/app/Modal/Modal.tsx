@@ -1,17 +1,12 @@
 "use client";
 
 import { useState } from "react";
+
 import {
   submitModal,
   generateReport,
   createPaymentOrder,
 } from "../../Service/api";
-
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
-}
 
 type FormState = {
   name: string;
@@ -28,6 +23,44 @@ type RazorpayResponse = {
   razorpay_order_id: string;
   razorpay_signature: string;
 };
+
+type RazorpayFailureResponse = {
+  error?: {
+    description?: string;
+  };
+};
+
+type RazorpayOptions = {
+  key: string;
+  amount: number;
+  currency: string;
+  order_id: string;
+  name: string;
+  description: string;
+  prefill: {
+    name: string;
+    email: string;
+    contact: string;
+  };
+  theme: {
+    color: string;
+  };
+  handler: (response: RazorpayResponse) => Promise<void>;
+};
+
+type RazorpayInstance = {
+  on: (
+    eventName: "payment.failed",
+    callback: (response: RazorpayFailureResponse) => void
+  ) => void;
+  open: () => void;
+};
+
+declare global {
+  interface Window {
+    Razorpay?: new (options: RazorpayOptions) => RazorpayInstance;
+  }
+}
 
 export default function Modal({
   isOpen,
@@ -47,7 +80,6 @@ export default function Modal({
   };
 
   const [form, setForm] = useState<FormState>(initialForm);
-
   const [loading, setLoading] = useState(false);
 
   const [status, setStatus] = useState<{
@@ -67,6 +99,8 @@ export default function Modal({
   };
 
   const handleClose = () => {
+    if (loading) return;
+
     setForm(initialForm);
     setStatus(null);
     onClose();
@@ -127,7 +161,6 @@ export default function Modal({
 
       document.body.appendChild(a);
       a.click();
-
       a.remove();
 
       URL.revokeObjectURL(url);
@@ -138,9 +171,8 @@ export default function Modal({
       });
 
       setTimeout(handleClose, 3000);
-
     } catch (error) {
-      console.error(error);
+      console.error("Report generation error:", error);
 
       setStatus({
         type: "error",
@@ -157,7 +189,7 @@ export default function Modal({
 
     if (!loaded) {
       throw new Error(
-        "Failed to load Razorpay. Check internet connection."
+        "Failed to load Razorpay. Check your internet connection."
       );
     }
 
@@ -188,7 +220,7 @@ export default function Modal({
       },
 
       theme: {
-        color: "#B08D57",
+        color: "#D4AF37",
       },
 
       handler: async (
@@ -198,11 +230,17 @@ export default function Modal({
       },
     };
 
-    const razorpay = new window.Razorpay(options);
+    const Razorpay = window.Razorpay;
+
+    if (!Razorpay) {
+      throw new Error("Razorpay checkout is unavailable.");
+    }
+
+    const razorpay = new Razorpay(options);
 
     razorpay.on(
       "payment.failed",
-      (response: any) => {
+      (response: RazorpayFailureResponse) => {
         setLoading(false);
 
         setStatus({
@@ -221,16 +259,16 @@ export default function Modal({
     if (loading) return;
 
     if (
-      !form.name ||
-      !form.birthName ||
-      !form.email ||
-      !form.phone ||
+      !form.name.trim() ||
+      !form.birthName.trim() ||
+      !form.email.trim() ||
+      !form.phone.trim() ||
       !form.dob ||
-      !form.birthPlace
+      !form.birthPlace.trim()
     ) {
       setStatus({
         type: "error",
-        message: "Please fill all required fields",
+        message: "Please fill all required fields.",
       });
 
       return;
@@ -242,6 +280,8 @@ export default function Modal({
 
       await handleRazorpayPayment();
     } catch (error) {
+      console.error("Payment error:", error);
+
       setLoading(false);
 
       setStatus({
@@ -254,124 +294,204 @@ export default function Modal({
     }
   };
 
+  const inputClass =
+    "w-full rounded-xl border border-[#D4AF37]/25 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition-all duration-300 focus:border-[#FFD700]/70 focus:bg-white/10 focus:ring-1 focus:ring-[#FFD700]/30 [color-scheme:dark]";
+
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-sm"
       onClick={handleClose}
     >
       <div
-        className="bg-white w-full max-w-lg rounded-2xl p-6 relative shadow-xl"
+        className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-[#D4AF37]/30 bg-[linear-gradient(145deg,#020617_0%,#0F172A_55%,#134E4A_100%)] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.7)] sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Decorative Glow */}
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#FFD700]/10 blur-3xl" />
+
+        {/* Close Button */}
         <button
+          type="button"
           onClick={handleClose}
-          className="absolute right-3 top-3 text-gray-500 text-xl"
+          disabled={loading}
+          aria-label="Close modal"
+          className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-xl text-slate-400 transition-all duration-300 hover:border-[#D4AF37]/40 hover:bg-[#FFD700]/10 hover:text-[#FFD700] disabled:cursor-not-allowed disabled:opacity-40"
         >
-          ✕
+          ×
         </button>
 
-        <h2 className="text-2xl font-bold text-center mb-4">
-          Get Your Personalized Numerology Report
-        </h2>
+        {/* Header */}
+        <div className="relative mb-6 text-center">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full border border-[#D4AF37]/30 bg-[#FFD700]/10 text-xl">
+            ✨
+          </div>
 
-        <div className="space-y-4">
+          <h2 className="text-xl font-bold text-white sm:text-2xl">
+            Get Your Personalized
+            <span className="block text-[#FFD700]">
+              Numerology Report
+            </span>
+          </h2>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Current Full Name"
-            value={form.name}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
+          <p className="mt-2 text-sm leading-relaxed text-slate-400">
+            Enter your details below to generate your
+            personalized report.
+          </p>
+        </div>
 
-          <input
-            type="text"
-            name="birthName"
-            placeholder="Full Name at Birth"
-            value={form.birthName}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
+        {/* Form */}
+        <div className="relative space-y-4">
+          {/* Current Name */}
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Current Full Name
+            </label>
 
-          <div className="flex gap-2">
-
-            {/* Date of Birth */}
             <input
-              type={form.dob ? "date" : "text"}
-              name="dob"
-              placeholder="Date of Birth"
-              value={form.dob}
-              onFocus={(e) => (e.target.type = "date")}
-              onBlur={(e) => {
-                if (!form.dob) e.target.type = "text";
-              }}
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              value={form.name}
               onChange={handleChange}
-              className="w-1/2 border p-3 rounded-lg"
-            />
-
-            {/* Birth Time */}
-            <input
-              type={form.birthTime ? "time" : "text"}
-              name="birthTime"
-              placeholder="Birth Time"
-              value={form.birthTime}
-              onFocus={(e) => (e.target.type = "time")}
-              onBlur={(e) => {
-                if (!form.birthTime) e.target.type = "text";
-              }}
-              onChange={handleChange}
-              className="w-1/2 border p-3 rounded-lg"
+              autoComplete="name"
+              className={inputClass}
             />
           </div>
 
-          <input
-            type="text"
-            name="birthPlace"
-            placeholder="Birth Place"
-            value={form.birthPlace}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
+          {/* Birth Name */}
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Full Name at Birth
+            </label>
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={form.phone}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
+            <input
+              type="text"
+              name="birthName"
+              placeholder="Enter your birth name"
+              value={form.birthName}
+              onChange={handleChange}
+              className={inputClass}
+            />
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
+          {/* DOB + Birth Time */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {/* Date of Birth */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                Date of Birth
+              </label>
 
-          <button
-            onClick={handleSubmit}
-            disabled={loading}
-            className="w-full bg-black text-white py-3 rounded-lg font-bold disabled:opacity-50"
-          >
-            {loading
-              ? "Processing..."
-              : "Get My Report"}
-          </button>
+              <input
+                type="date"
+                name="dob"
+                value={form.dob}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
 
+            {/* Birth Time */}
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+                Birth Time
+              </label>
+
+              <input
+                type="time"
+                name="birthTime"
+                value={form.birthTime}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
+          </div>
+
+          {/* Birth Place */}
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Birth Place
+            </label>
+
+            <input
+              type="text"
+              name="birthPlace"
+              placeholder="Enter your birth place"
+              value={form.birthPlace}
+              onChange={handleChange}
+              autoComplete="address-level2"
+              className={inputClass}
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Phone Number
+            </label>
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Enter your phone number"
+              value={form.phone}
+              onChange={handleChange}
+              autoComplete="tel"
+              className={inputClass}
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={form.email}
+              onChange={handleChange}
+              autoComplete="email"
+              className={inputClass}
+            />
+          </div>
+
+          {/* Status */}
           {status && (
-            <p
-              className={`text-sm text-center ${status.type === "success"
-                  ? "text-green-600"
-                  : "text-red-500"
-                }`}
+            <div
+              className={`rounded-xl border px-4 py-3 text-center text-sm ${
+                status.type === "success"
+                  ? "border-green-500/20 bg-green-500/10 text-green-400"
+                  : "border-red-500/20 bg-red-500/10 text-red-400"
+              }`}
             >
               {status.message}
-            </p>
+            </div>
           )}
+
+          {/* Submit Button */}
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={loading}
+            className="mt-2 w-full rounded-xl bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#B8860B] py-3.5 font-bold uppercase tracking-wide text-[#020617] shadow-[0_8px_30px_rgba(212,175,55,0.25)] transition-all duration-300 hover:scale-[1.01] hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#020617]/30 border-t-[#020617]" />
+                Processing...
+              </span>
+            ) : (
+              "Get My Report"
+            )}
+          </button>
+
+          {/* Secure Payment Text */}
+          <p className="text-center text-[11px] text-slate-500">
+            🔒 Secure payment powered by Razorpay
+          </p>
         </div>
       </div>
     </div>

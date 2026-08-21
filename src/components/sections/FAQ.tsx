@@ -101,7 +101,7 @@ const FAQ = () => {
             </h2>
 
             <p className="text-gray-300 text-sm leading-7">
-              Can't find the answer you're looking for? Reach out to our
+              Can&apos;t find the answer you&apos;re looking for? Reach out to our
               customer support team.
             </p>
           </div>

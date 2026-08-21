@@ -6,7 +6,7 @@ import Modal from "@/app/Modal/Modal";
 import usePricing from "@/hooks/usePricing";
 import SacredGeometry from "@/components/ui/SacredGeometry";
 
-// ================= PRICING TYPE =================
+
 type PricingType = {
   price: number;
   finalPrice: number;
@@ -33,7 +33,7 @@ const StickyBottomBar: React.FC = () => {
 
   // ================= TIMER SETUP =================
   useEffect(() => {
-    if (!pricing || !countdown || !offerId) return;
+    if (!pricing || countdown == null || !offerId) return;
 
     const storedOfferId = localStorage.getItem("offer_id");
 
@@ -48,8 +48,12 @@ const StickyBottomBar: React.FC = () => {
     const expired = localStorage.getItem("offer_expired");
 
     if (expired === "true") {
-      setTimeLeft(0);
-      setIsReady(true);
+      const markExpired = () => {
+        setTimeLeft(0);
+        setIsReady(true);
+      };
+
+      markExpired();
       return;
     }
 
@@ -85,7 +89,11 @@ const StickyBottomBar: React.FC = () => {
 
     const interval = setInterval(updateTimer, 1000);
 
-    setIsReady(true);
+    const markReady = () => {
+      setIsReady(true);
+    };
+
+    markReady();
 
     return () => clearInterval(interval);
   }, [pricing, countdown, offerId]);
@@ -122,7 +130,7 @@ const StickyBottomBar: React.FC = () => {
     <>
       <div className="fixed bottom-0 left-0 right-0 z-50 overflow-hidden">
 
-        {/* Premium Top Glow */}
+      
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[500px] h-24 bg-[#FFD700]/10 blur-3xl pointer-events-none" />
 
        <div className="relative overflow-hidden border-t border-[#D4AF37]/30 bg-[linear-gradient(90deg,#020617_0%,#0F172A_45%,#134E4A_100%)] backdrop-blur-2xl shadow-[0_-12px_40px_rgba(0,0,0,0.55)] px-4 py-3">

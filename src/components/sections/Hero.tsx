@@ -18,38 +18,47 @@ type PricingType = {
 };
 const Hero: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [mounted, setMounted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const pricing = usePricing() as PricingType | null;
+
   useEffect(() => {
-    setMounted(true);
-  }, []);
-  useEffect(() => {
-    if (!mounted || !pricing?.countdown) return;
-    const savedEndTime = localStorage.getItem("offer_end_time");
-    if (savedEndTime) {
-      const remaining = Math.max(
-        0,
-        Math.floor((Number(savedEndTime) - Date.now()) / 1000)
-      );
-      setTimeLeft(remaining);
-    } else {
+    if (!pricing?.countdown) return;
+
+    const initializeTimer = () => {
+      const savedEndTime = localStorage.getItem("offer_end_time");
+
+      if (savedEndTime) {
+        const remaining = Math.max(
+          0,
+          Math.floor((Number(savedEndTime) - Date.now()) / 1000)
+        );
+
+        setTimeLeft(remaining);
+        return;
+      }
+
       const endTime = Date.now() + pricing.countdown * 1000;
       localStorage.setItem(
         "offer_end_time",
         endTime.toString()
       );
       setTimeLeft(pricing.countdown);
-    }
-  }, [mounted, pricing]);
+    };
+
+    initializeTimer();
+  }, [pricing]);
+
   useEffect(() => {
-    if (!mounted || timeLeft <= 0) return;
+    if (timeLeft === null || timeLeft <= 0) return;
+
     const interval = setInterval(() => {
-      setTimeLeft((prev) => Math.max(0, prev - 1));
+      setTimeLeft((prev) => Math.max(0, (prev ?? 0) - 1));
     }, 1000);
+
     return () => clearInterval(interval);
-  }, [mounted, timeLeft]);
-  const isExpired = mounted && timeLeft <= 0;
+  }, [timeLeft]);
+
+  const isExpired = timeLeft !== null && timeLeft <= 0;
   const price = pricing?.price ?? 1999;
   const finalPrice = !isExpired
     ? pricing?.finalPrice ?? price

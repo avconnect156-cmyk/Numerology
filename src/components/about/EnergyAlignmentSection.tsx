@@ -468,7 +468,7 @@ const EnergyAlignmentSection = () => {
 
                     <li className="flex gap-3">
                       <span className="text-[#FFD54F]">•</span>
-                      <span>Office Vastu aligned with the owner's number.</span>
+                      <span>Office Vastu aligned with the owner&apos;s number.</span>
                     </li>
 
                   </ul>
@@ -671,7 +671,7 @@ const EnergyAlignmentSection = () => {
                     <li className="flex gap-3">
                       <span className="text-[#FFD54F] font-bold">•</span>
                       <span>
-                        Office Vastu aligned with the owner's number.
+                        Office Vastu aligned with the owner&apos;s number.
                       </span>
                     </li>
 
@@ -979,7 +979,7 @@ const EnergyAlignmentSection = () => {
 
               <p className="mt-6 text-sm sm:text-base md:text-[15px] lg:text-[16px] leading-7 text-white/85">
                 Our goal is not merely to predict events but to help you understand
-                the root cause of life's challenges and provide practical guidance
+                the root cause of life&apos;s challenges and provide practical guidance
                 for lasting transformation.
               </p>
 

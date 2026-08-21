@@ -195,7 +195,7 @@ const DivineOrigin = () => {
                 )
                 emerging from{" "}
                 <strong>
-                  Lord Shiva's Damru
+                  Lord Shiva&apos;s Damru
                 </strong>{" "}
                 gave rise to the Vedas.
 
@@ -204,7 +204,7 @@ const DivineOrigin = () => {
 
                 The syllables{" "}
                 <strong>
-                  "A," "U," and "M"
+                  &quot;A,&quot; &quot;U,&quot; and &quot;M&quot;
                 </strong>{" "}
                 are said to have formed the foundation of the four Vedas –
 

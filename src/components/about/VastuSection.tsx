@@ -62,10 +62,10 @@ const VastuIntroductionSection = () => {
   <p className="mt-6 text-sm sm:text-base md:text-[15px] lg:text-[16px] leading-7 text-white/85">
     The word{" "}
     <span className="font-semibold text-white">Vastu</span> means{" "}
-    <span className="text-[#FFD54F] font-semibold">"dwelling"</span> and{" "}
+    <span className="text-[#FFD54F] font-semibold">&quot;dwelling&quot;</span> and{" "}
     <span className="font-semibold text-white">Shastra</span> means{" "}
     <span className="text-[#FFD54F] font-semibold">
-      "science or knowledge."
+      &quot;science or knowledge.&quot;
     </span>
   </p>
 
@@ -165,12 +165,12 @@ const VastuIntroductionSection = () => {
 
         <li className="flex gap-3">
           <span className="text-[#FFD54F] font-bold">•</span>
-          <span>Dwarka (Krishna's Kingdom)</span>
+          <span>Dwarka (Krishna&apos;s Kingdom)</span>
         </li>
 
         <li className="flex gap-3">
           <span className="text-[#FFD54F] font-bold">•</span>
-          <span>Indraprastha (Pandavas' Capital)</span>
+          <span>Indraprastha (Pandavas&apos; Capital)</span>
         </li>
 
       </ul>

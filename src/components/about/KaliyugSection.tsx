@@ -471,9 +471,9 @@ const KaliyugSection = () => {
                         <div className="mt-10 rounded-2xl border border-[#FFD54F]/20 bg-[#FFD54F]/10 p-6">
 
                             <p className="text-center text-base sm:text-lg md:text-[20px] lg:text-[22px] font-semibold text-[#FFD54F] leading-relaxed">
-                                "The more selflessly we serve others,
+                                &quot;The more selflessly we serve others,
                                 <br />
-                                the more our own life becomes blessed."
+                                the more our own life becomes blessed.&quot;
                             </p>
 
                         </div>
@@ -666,10 +666,10 @@ const KaliyugSection = () => {
                             </div>
 
                             <p className="mt-8 text-center italic text-base sm:text-lg md:text-[20px] text-white/85 leading-relaxed">
-                                "May every action become Dharma,
+                                &quot;May every action become Dharma,
                                 every thought become pure,
                                 every prayer become Bhakti,
-                                and every soul attain Moksha."
+                                and every soul attain Moksha.&quot;
                             </p>
 
                         </div>

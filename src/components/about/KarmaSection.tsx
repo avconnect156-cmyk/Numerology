@@ -44,7 +44,7 @@ const KarmaSection = () => {
             </h3>
 
             <p className="mt-6 text-sm sm:text-base md:text-[15px] lg:text-[16px] leading-7 text-white/85">
-              Often, people question life's fairness:
+              Often, people question life&apos;s fairness:
             </p>
 
             <div className="mt-6 rounded-2xl border border-[#FFD54F]/20 bg-[#FFD54F]/5 p-5 sm:p-6">
@@ -291,9 +291,9 @@ const KarmaSection = () => {
               <div className="mt-10 rounded-2xl border border-[#FFD54F]/20 bg-[#FFD54F]/5 p-6">
 
                 <p className="text-center text-base sm:text-lg md:text-[20px] lg:text-[22px] leading-relaxed text-white font-medium">
-                  "So, karma plays a major role in our lives in determining the
+                  &quot;So, karma plays a major role in our lives in determining the
                   direction (disha) and condition (dasha) of our present and
-                  future."
+                  future.&quot;
                 </p>
 
               </div>
@@ -324,14 +324,14 @@ const KarmaSection = () => {
               <div className="mt-8 rounded-2xl border border-[#FFD54F]/20 bg-white/5 p-6">
 
                 <p className="text-sm sm:text-base md:text-[15px] lg:text-[16px] leading-7 text-white/85">
-                  Fact is "A businessman's child will first become a businessman.
-                  They carry forward their ancestors' work. Whether they achieve
+                  Fact is &quot;A businessman&apos;s child will first become a businessman.
+                  They carry forward their ancestors&apos; work. Whether they achieve
                   success or not is a matter for later. Similarly, a working
-                  person's child will give importance to a job first, and an
-                  auto driver's child will prioritize driving an auto. But how
+                  person&apos;s child will give importance to a job first, and an
+                  auto driver&apos;s child will prioritize driving an auto. But how
                   things change depends entirely on their own karma (actions)
                   and their destiny. Even if two people are born at the same
-                  date and time, their lives can be completely different."
+                  date and time, their lives can be completely different.&quot;
                 </p>
 
               </div>

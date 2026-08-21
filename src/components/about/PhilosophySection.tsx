@@ -96,7 +96,7 @@ const PhilosophySection = () => {
               Among them,
 
               <span className="font-bold text-[#FFD54F]">
-                {" "}Jyotish is regarded as the "Eye of the Vedas."
+                {" "}Jyotish is regarded as the &quot;Eye of the Vedas.&quot;
               </span>
 
             </p>

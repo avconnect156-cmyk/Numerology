@@ -204,13 +204,13 @@ const ModernVastuSection = () => {
                                 </div>
 
                                 <h3 className="text-2xl sm:text-[24px] md:text-[26px] lg:text-[28px] font-bold text-[#FFD54F]">
-                                    Vastu in Today's Time
+                                    Vastu in Today&apos;s Time
                                 </h3>
 
                             </div>
 
                             <p className="mt-6 text-sm sm:text-base md:text-[15px] lg:text-[16px] leading-7 text-white/85">
-                                In today's time, Vastu is often combined with modern sciences and
+                                In today&apos;s time, Vastu is often combined with modern sciences and
                                 practical design principles to create healthier, more balanced,
                                 and energy-efficient living and working spaces.
                             </p>

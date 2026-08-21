@@ -40,6 +40,14 @@ export interface ModalData {
   birthPlace: string;
 }
 
+export interface PaymentOrderResponse {
+  data: {
+    orderId: string;
+    amount: number;
+    currency: string;
+  };
+}
+
 // ================= GENERIC POST =================
 
 export async function postData<T>(endpoint: string, data: T) {
@@ -114,7 +122,7 @@ export async function submitModal(data: ModalData) {
 
 // ================= PAYMENT API =================
 
-export async function createPaymentOrder() {
+export async function createPaymentOrder(): Promise<PaymentOrderResponse> {
   const response = await fetch(`${API_BASE_URL}/payment/create-order`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

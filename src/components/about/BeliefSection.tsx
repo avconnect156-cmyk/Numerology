@@ -345,7 +345,7 @@ const BeliefSection = () => {
           <p className="text-sm sm:text-base md:text-[15px] lg:text-[16px] leading-7 text-white/85">
 
 
-            Often, people question life's fairness:
+            Often, people question life&apos;s fairness:
 
 
           </p>

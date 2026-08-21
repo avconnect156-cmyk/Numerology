@@ -69,7 +69,7 @@ const Services = () => {
   </span>{" "}
   that reveal your{" "}
   <span className="text-white font-medium">
-    life's purpose
+    life&apos;s purpose
   </span>
   ,{" "}
   <span className="bg-gradient-to-r from-[#FFD54F] via-[#F4B400] to-[#FFEA8A] bg-clip-text text-transparent font-semibold">

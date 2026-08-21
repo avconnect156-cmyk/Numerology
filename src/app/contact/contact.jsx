@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "./ui/button";
+import Button from "@/components/ui/Button";
 import { Send } from "lucide-react";
-import { sendContact } from "@/services/api"; // ✅ import added
+import { sendContact } from "@/Service/api";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,12 +15,12 @@ const ContactForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e:any) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   // ✅ UPDATED: using centralized API
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -29,9 +29,9 @@ const ContactForm = () => {
 
       alert("Message sent successfully!");
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error:", error);
-      alert(error.message || "Something went wrong");
+      alert(error instanceof Error ? error.message : "Something went wrong");
     } finally {
       setLoading(false);
     }
